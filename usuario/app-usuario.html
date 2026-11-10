@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>SUPERGASTOS - Panel de Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="app-usuario.css">
+</head>
+<body>
+    <div class="layout">
+        <aside class="menu">
+            <header class="encabezado-menu">
+                <h2>SUPERGASTOS</h2>
+                <p>Área Operativa</p>
+            </header>
+            <nav id="sidebarNavUsuario" class="menu-lista">
+                <a href="#" data-vista="dashboard" class="activo"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                <a href="#" data-vista="gastos"><i class="bi bi-cash-stack"></i> Gastos</a>
+                <a href="#" data-vista="insumos"><i class="bi bi-box-seam"></i> Insumos</a>
+                <a href="#" data-vista="mermas"><i class="bi bi-graph-down-arrow"></i> Mermas</a>
+                <a href="#" data-vista="historial"><i class="bi bi-clock-history"></i> Historial</a>
+            </nav>
+            <div class="menu-footer">
+                <button class="btn-cerrar-sesion" id="cerrar-sesion"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <main class="contenido">
+            <header class="encabezado">
+                <div>
+                    <h2 id="titulo-vista">Dashboard</h2>
+                    <p id="subtitulo-vista">Resumen operativo del departamento</p>
+                </div>
+                <div class="encabezado-acciones">
+                    <i class="bi bi-bell-fill campana"></i>
+                    <div class="usuario"><i class="bi bi-person-circle"></i> <span id="nombre-usuario">Usuario</span></div>
+                </div>
+            </header>
+
+            <div class="cuerpo">
+                <p id="aviso" class="aviso" hidden></p>
+                <div id="vista-contenedor"></div>
+            </div>
+        </main>
+    </div>
+
+    <dialog id="modal-gasto-usr">
+        <form id="form-gasto-usr">
+            <h3>Registrar Gasto (Panadería)</h3>
+            <label>Fecha</label><input type="date" id="gu-fecha" required>
+            <label>Concepto</label><input type="text" id="gu-concepto" required>
+            <label>Categoría</label><input type="text" id="gu-categoria" value="Operativo" required>
+            <label>Proveedor</label><input type="text" id="gu-proveedor" required>
+            <label>Monto</label><input type="number" id="gu-monto" step="0.01" required>
+            <div class="modal-botones">
+                <button type="button" class="btn-borde" onclick="document.getElementById('modal-gasto-usr').close()">Cancelar</button>
+                <button type="submit" class="btn-azul">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="modal-merma-usr">
+        <form id="form-merma-usr">
+            <h3>Registrar Merma (Panadería)</h3>
+            <label>Fecha</label><input type="date" id="mu-fecha" required>
+            <label>Producto</label><input type="text" id="mu-producto" required>
+            <label>Motivo</label><input type="text" id="mu-motivo" required>
+            <label>Cantidad</label><input type="text" id="mu-cantidad" placeholder="Ej. 5 pza" required>
+            <label>Valor</label><input type="number" id="mu-monto" step="0.01" required>
+            <div class="modal-botones">
+                <button type="button" class="btn-borde" onclick="document.getElementById('modal-merma-usr').close()">Cancelar</button>
+                <button type="submit" class="btn-azul">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="modal-insumo-usr">
+        <form id="form-insumo-usr">
+            <h3>Registrar Insumo (Panadería)</h3>
+            <label>Fecha</label><input type="date" id="iu-fecha" required>
+            <label>Insumo</label><input type="text" id="iu-nombre" required>
+            <label>Cantidad</label><input type="text" id="iu-cantidad" required>
+            <label>Proveedor</label><input type="text" id="iu-proveedor" required>
+            <label>Costo</label><input type="number" id="iu-costo" step="0.01" required>
+            <div class="modal-botones">
+                <button type="button" class="btn-borde" onclick="document.getElementById('modal-insumo-usr').close()">Cancelar</button>
+                <button type="submit" class="btn-azul">Guardar</button>
+            </div>
+        </form>
+    </dialog>
+
+    <dialog id="modal-solicitud-usr">
+    <form id="form-solicitud-usr">
+        <h3>Solicitar Presupuesto Adicional</h3>
+        <label>Fecha</label>
+        <input type="date" id="su-fecha" required>
+        <label>Monto Solicitado ($)</label>
+        <input type="number" step="0.01" id="su-monto" required placeholder="Ej. 5000">
+        <label>Motivo de la Solicitud</label>
+        <input type="text" id="su-motivo" required placeholder="Ej. Compra urgente de materia prima">
+        <div class="modal-botones">
+            <button type="button" class="btn-borde-modal" onclick="document.getElementById('modal-solicitud-usr').close()">Cancelar</button>
+            <button type="submit" class="btn-azul">Enviar Solicitud</button>
+        </div>
+    </form>
+</dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="app-usuario.js"></script>
+</body>
+</html>

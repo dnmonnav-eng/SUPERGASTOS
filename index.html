@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperGastos - Iniciar Sesión</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="caja">
+        <h1>SuperGastos</h1>
+        <p class="texto">Inicia sesión en tu cuenta</p>
+        
+        <form id="form-login">
+            <input type="email" id="login-correo" class="correo" required placeholder="Correo electrónico">
+            <input type="password" id="login-password" class="contra" required placeholder="Contraseña">
+            
+            <button type="submit">Entrar</button>
+            <p id="error-login" style="color:#DC2626; font-size:13px; margin-top:15px;"></p>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="index.js"></script>
+</body>
+</html>
